@@ -1,3 +1,4 @@
+
 # PyTorch Docker Environment
 
 This repository contains Docker configurations to set up a development environment for PyTorch with NVIDIA GPU support, ROS, and ROS2.
@@ -13,6 +14,23 @@ This repository contains Docker configurations to set up a development environme
 Ensure that you have the following installed on your system:
 - Docker
 - NVIDIA Docker (nvidia-docker)
+
+## Docker Image Versions
+
+The Dockerfile uses the following base image:
+- **PyTorch**: 2.3.1
+- **CUDA**: 12.1
+- **cuDNN**: 8
+- **Development**: devel
+
+You can modify the `Dockerfile` to use different versions of PyTorch, CUDA, or cuDNN by changing the `FROM` line:
+```dockerfile
+FROM pytorch/pytorch:<pytorch_version>-cuda<cuda_version>-cudnn<cudnn_version>-devel
+```
+For example, to use PyTorch 2.2.0 with CUDA 11.8 and cuDNN 8, you would update the `FROM` line to:
+```dockerfile
+FROM pytorch/pytorch:2.2.0-cuda11.8-cudnn8-devel
+```
 
 ## Building the Docker Image
 
@@ -71,4 +89,3 @@ If you find any issues or have suggestions for improvements, feel free to open a
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
