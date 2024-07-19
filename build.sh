@@ -5,6 +5,9 @@ IMAGE_NAME="my_pytorch_image"
 IMAGE_TAG="latest"
 # CONTAINER_NAME="my_pytorch_container"
 
+# 기본값 설정
+BASE_IMAGE=${1:-pytorch/pytorch:2.2.0-cuda11.8-cudnn8-devel}
+
 # 현재 경로에 workspace 폴더가 있는지 확인하고 없으면 생성
 WORKSPACE_DIR=$(pwd)/workspace
 if [ ! -d "$WORKSPACE_DIR" ]; then
@@ -13,8 +16,8 @@ if [ ! -d "$WORKSPACE_DIR" ]; then
 fi
 
 # Docker 이미지 빌드
-echo "Building Docker image..."
-docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .
+echo "Building Docker image with base image: ${BASE_IMAGE}..."
+docker build --build-arg BASE_IMAGE=${BASE_IMAGE} -t ${IMAGE_NAME}:${IMAGE_TAG} .
 
 # Docker 컨테이너 실행
 # echo "Running Docker container..."

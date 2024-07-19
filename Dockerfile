@@ -1,5 +1,6 @@
 # 베이스 이미지 선택
-FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel
+ARG BASE_IMAGE=pytorch/pytorch:2.2.0-cuda11.8-cudnn8-devel
+FROM ${BASE_IMAGE}
 
 # 환경 변수 설정
 ENV DEBIAN_FRONTEND=noninteractive
