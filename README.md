@@ -50,10 +50,6 @@ This script will start a Docker container with the following configurations:
 - ROS and ROS2 support
 - Shared `/workspace` directory for persistent storage
 
-## Accessing Jupyter Notebook
-
-Once the container is running, you can access Jupyter Notebook by navigating to `http://localhost:8888` in your web browser.
-
 ## Customizing the Environment
 
 If you need to install additional Python packages or system dependencies, you can modify the `Dockerfile` accordingly and rebuild the image using `build.sh`.
