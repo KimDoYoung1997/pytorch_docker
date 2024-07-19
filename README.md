@@ -49,7 +49,10 @@ FROM pytorch/pytorch:2.2.0-cuda11.8-cudnn8-devel
     ```sh
     ./build.sh
     ```
-
+    To use a different base image, pass the image name as an argument:
+    ```sh
+    ./build.sh pytorch/pytorch:2.3.1-cuda12.1-cudnn8-devel 
+    ```
 ## Running the Docker Container
 
 1. Make sure `run_container.sh` is executable:
