@@ -47,6 +47,14 @@ RUN conda update -y conda
 # Jupyter Lab 설치
 # RUN /bin/bash -c "source /usr/local/conda/etc/profile.d/conda.sh && conda activate ${CONDA_ENV_NAME} && conda install -c conda-forge jupyterlab && jupyter serverextension enable --py jupyterlab --sys-prefix"
 
+
+# Conda 초기화 및 가상환경 생성
+RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh && conda init bash && conda create -n ${CONDA_ENV_NAME} python=${PYTHON_VERSION} && echo 'conda activate ${CONDA_ENV_NAME}' >> ~/.bashrc"
+
+# Jupyter Lab 설치
+RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh && conda activate ${CONDA_ENV_NAME} && conda install -c conda-forge jupyterlab"
+
+
 # 일반 유저 생성 및 권한 설정
 ARG UID=1000
 ARG USER_NAME=myuser
